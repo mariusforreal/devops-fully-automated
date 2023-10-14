@@ -77,14 +77,14 @@ pipeline {
 
     stage('Deploy to DEV') {
       environment {
-        HOSTS = "dev"
+        HOSTS = "172.31.26.235"
       }
       steps {
         sh "ansible-playbook -i /etc/ansible/hosts ${WORKSPACE}/deploy.yaml --extra-vars \"hosts=$HOSTS workspace_path=$WORKSPACE\""
       }
 
     }
-    stage('Approval for dev') {
+    stage('Approval for 172.31.26.235') {
       steps {
         input('Do you want to proceed?')
       }
